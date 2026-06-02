@@ -1,6 +1,9 @@
-{ config, pkgs, pkgs-master, ... }:
-
 {
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
   programs.btop = {
     enable = true;
     settings = {

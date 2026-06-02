@@ -1,9 +1,9 @@
-{ config, pkgs, pkgs-master, ... }:
-
 {
-    # Load the nvidia driver for Xorg and Wayland
-    services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
-
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -19,10 +19,17 @@
     #media-session.enable = true;
   };
 
-   services = {
-      hardware.openrgb.enable = true;
-      flatpak.enable = true;
-      udisks2.enable = true;
-      printing.enable = true;
-    };
+  services = {
+    hardware.openrgb.enable = true;
+    flatpak.enable = true;
+    udisks2.enable = true;
+    printing.enable = true;
+  };
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us,ru";
+    variant = "";
+    options = "grp:caps_toggle";
+  };
 }

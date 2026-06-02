@@ -1,6 +1,9 @@
-{ config, pkgs, pkgs-master, ... }:
-
 {
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -22,8 +25,7 @@
       package = pkgs.oh-my-zsh;
       #custom = "$HOME/.oh-my-custom";
       theme = "agnoster";
-      plugins = [ "git" "z" "docker" "docker-compose" "eza" "fzf" ];
+      plugins = ["git" "z" "docker" "docker-compose" "eza" "fzf"];
     };
   };
-
 }

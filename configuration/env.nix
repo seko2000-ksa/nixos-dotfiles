@@ -1,6 +1,10 @@
-{ config, pkgs, pkgs-master, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  pkgs-master,
+  inputs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     v4l-utils
     udiskie
@@ -10,5 +14,10 @@
     #pkgs.nur.repos.foolnotion.q5go
   ];
 
-  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" "/share/zsh" ];
+  environment.pathsToLink = ["/share/applications" "/share/xdg-desktop-portal" "/share/zsh"];
+
+  environment.sessionVariables = {
+    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+  };
 }

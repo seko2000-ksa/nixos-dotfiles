@@ -1,10 +1,13 @@
-{ config, pkgs, pkgs-master, ... }:
-
 {
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.config.common.default = "*";
-  
+
   xdg.configFile = {
     #"starship.toml".source = ../config/starship/starship.main.toml;
     #"alacritty/alacritty.toml".source = ../config/alacritty/alacritty.toml;
@@ -35,5 +38,4 @@
       "image/*" = ["imv"];
     };
   };
-
 }

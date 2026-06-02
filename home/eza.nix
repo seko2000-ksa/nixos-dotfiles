@@ -1,4 +1,9 @@
 {
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
   programs.eza = {
     enable = true;
     enableZshIntegration = true;

@@ -17,20 +17,27 @@
 
     lazyvim.url = "github:pfassina/lazyvim-nix";
     lazyvim.inputs.nixpkgs.follows = "nixpkgs";
- 
-   nur = {
+
+    nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-master, home-manager, noctalia, lazyvim, nur }@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-master,
+    home-manager,
+    noctalia,
+    lazyvim,
+    nur,
+  } @ inputs: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [  ];
+      overlays = [];
     };
     pkgs-master = import nixpkgs-master {
       inherit system;
@@ -44,9 +51,10 @@
       noctalia.homeModules.default
     ];
   in {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     nixosConfigurations.machine = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
-      specialArgs = { inherit pkgs-master; };
+      specialArgs = {inherit pkgs-master;};
       modules = [
         ./configuration
         home-manager.nixosModules.home-manager
@@ -54,8 +62,13 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit pkgs-master; };
-            users.ksa = { config, pkgs, lazyvim, ... }: { imports = homeModules; };
+            extraSpecialArgs = {inherit pkgs-master;};
+            users.ksa = {
+              config,
+              pkgs,
+              lazyvim,
+              ...
+            }: {imports = homeModules;};
             backupFileExtension = "backup";
           };
         }
@@ -64,13 +77,15 @@
 
     homeConfigurations.user = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = homeModules ++ [
-        {
-          home.username = "ksa";
-          home.homeDirectory = "/home/ksa";
-        }
-      ];
-      extraSpecialArgs = { inherit pkgs-master; };
+      modules =
+        homeModules
+        ++ [
+          {
+            home.username = "ksa";
+            home.homeDirectory = "/home/ksa";
+          }
+        ];
+      extraSpecialArgs = {inherit pkgs-master;};
     };
   };
 }

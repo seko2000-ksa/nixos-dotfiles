@@ -1,20 +1,23 @@
-{ config, pkgs, pkgs-master, ... }:
-
 {
-programs.alacritty = {
-  enable = true;
-  settings = {
-    window = {
-      opacity = 0.9;
-      decorations = "None";
-    };
-    font = {
-      normal = {
-        family = "JetBrainsMono Nerd Font";
-        style = "Regular";
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window = {
+        opacity = 0.9;
+        decorations = "None";
       };
-      size = 12.0;
+      font = {
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Regular";
+        };
+        size = 12.0;
+      };
     };
   };
-};
 }

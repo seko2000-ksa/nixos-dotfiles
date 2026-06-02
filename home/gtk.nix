@@ -1,9 +1,15 @@
-{ config, pkgs, pkgs-master, ... }:
-
 {
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
   gtk = {
     enable = true;
-    theme = { name = "Adwaita-dark"; package = pkgs.gnome-themes-extra; };
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
     colorScheme = "dark";
     gtk3.colorScheme = "dark";
     gtk4.colorScheme = "dark";
@@ -13,13 +19,13 @@
       package = pkgs.papirus-icon-theme;
     };
 
-#    gtk3.extraConfig = {
- #     "gtk-application-prefer-dark-theme" = 1;
- #   };
+    #    gtk3.extraConfig = {
+    #     "gtk-application-prefer-dark-theme" = 1;
+    #   };
 
-#    gtk4.extraConfig = {
-#      "gtk-application-prefer-dark-theme" = 1;
-#    };
+    #    gtk4.extraConfig = {
+    #      "gtk-application-prefer-dark-theme" = 1;
+    #    };
   };
 
   qt = {

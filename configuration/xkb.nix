@@ -1,6 +1,9 @@
-{ config, pkgs, pkgs-master, ... }:
-
 {
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
   time.hardwareClockInLocalTime = true;
@@ -18,12 +21,5 @@
     LC_PAPER = "ru_RU.UTF-8";
     LC_TELEPHONE = "ru_RU.UTF-8";
     LC_TIME = "ru_RU.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us,ru";
-    variant = "";
-    options = "grp:caps_toggle";
   };
 }

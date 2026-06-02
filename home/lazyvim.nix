@@ -1,6 +1,9 @@
-{ config, pkgs, pkgs-master, ... }:
-
 {
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}: {
   programs.lazyvim = {
     enable = true;
 
@@ -11,20 +14,20 @@
         installDependencies = true;
         installRuntimeDependencies = true;
         config = ''
-        return {
-          "neovim/nvim-lspconfig",
-          opts = {
-            servers = {
-              rust_analyzer = {
-                settings = {
-                  ["rust-analyzer"] = {
-                    cargo = { features = "all" },
+          return {
+            "neovim/nvim-lspconfig",
+            opts = {
+              servers = {
+                rust_analyzer = {
+                  settings = {
+                    ["rust-analyzer"] = {
+                      cargo = { features = "all" },
+                    },
                   },
                 },
               },
             },
-          },
-        }
+          }
         '';
       };
 
@@ -45,7 +48,6 @@
         installDependencies = true;
         installRuntimeDependencies = true;
       };
-
     };
 
     # Additional packages (optional)
