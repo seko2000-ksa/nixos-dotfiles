@@ -2,12 +2,13 @@
   config,
   pkgs,
   pkgs-master,
+  noctalia,
   ...
 }: {
   programs.niri.enable = true;
+  #programs.noctalia-shell.enable = true;
 
   environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
     tokyonight-gtk-theme
     swayimg

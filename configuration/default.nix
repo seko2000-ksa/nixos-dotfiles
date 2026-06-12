@@ -21,6 +21,7 @@
     ./bluetooth.nix
     ./virtualization.nix
     ./bootloader.nix
+    ./gnupg.nix
     #./gaming.nix
   ];
 
@@ -49,16 +50,12 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "docker"
       "video"
       "audio"
       "libvirtd"
     ];
     shell = pkgs.zsh;
   };
-
-  virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs-master.docker;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -67,5 +64,5 @@
 
   system.stateVersion = "26.05"; # Did you read the comment?
 
-  nix.settings.trusted-users = ["root" "user"];
+  nix.settings.trusted-users = ["root" "ksa"];
 }

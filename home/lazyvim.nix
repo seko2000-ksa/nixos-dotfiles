@@ -6,6 +6,7 @@
 }: {
   programs.lazyvim = {
     enable = true;
+    configFiles = /home/ksa/nixos/config/my-lazyvim-config;
 
     extras = {
       lang.nix.enable = true;

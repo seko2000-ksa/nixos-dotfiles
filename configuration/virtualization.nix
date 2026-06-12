@@ -17,4 +17,7 @@
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
   };
+
+  #virtualisation.docker.enable = true;
+  #virtualisation.docker.package = pkgs-master.docker;
 }

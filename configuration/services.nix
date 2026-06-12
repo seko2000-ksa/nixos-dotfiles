@@ -21,9 +21,9 @@
 
   services = {
     hardware.openrgb.enable = true;
-    flatpak.enable = true;
+    flatpak.enable = false;
     udisks2.enable = true;
-    printing.enable = true;
+    printing.enable = false;
   };
 
   # Configure keymap in X11

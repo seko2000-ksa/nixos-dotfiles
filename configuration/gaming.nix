@@ -33,6 +33,19 @@
     };
   };
 
+specialisation = {
+    gaming-time.configuration = {
+
+      hardware.nvidia = {
+        prime.sync.enable = lib.mkForce true;
+        prime.offload = {
+          enable = lib.mkForce false;
+          enableOffloadCmd = lib.mkForce false;
+        };
+      };
+
+    };
+  };
   environment.systemPackages = with pkgs; [
     inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-tkg
     lutris

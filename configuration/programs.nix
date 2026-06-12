@@ -6,10 +6,12 @@
 }: {
   programs.zsh.enable = true;
   programs.evince.enable = true;
-  programs.chromium.enable = true;
+  #programs.throne.enable = true;
+  #programs.throne.tunMode.enable = true;
+
   programs.evolution = {
     enable = true;
-    plugins = ["evolution-ews"];
+    plugins = [ pkgs.evolution-ews ];
   };
 
   # Add any shared libraries your unpatched binaries require

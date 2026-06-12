@@ -19,5 +19,8 @@
   environment.sessionVariables = {
     PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
     PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+    GDK_SCALE = ".7";
+    NIXPKGS_ACCEPT_ANDROID_SDK_LICENSE = 1;
+    NIXPKGS_ALLOW_UNFREE = 1;
   };
 }

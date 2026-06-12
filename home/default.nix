@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   pkgs-master,
   ...
 }: {
@@ -12,7 +13,8 @@
   imports = [
     ./git.nix
     ./zsh.nix
-    ./lazyvim.nix
+    #./lazyvim.nix
+    #./neovim.nix
     ./xdg.nix
     ./zsh.nix
     ./btop.nix
@@ -23,26 +25,28 @@
   ];
 
   home.packages = with pkgs; [
-    act
-    actionlint
+    noctalia-shell
+    chromium
+    #act
+    #actionlint
     alacritty
-    asciinema
-    asciinema-agg
-    ashell
-    autojump
+    #asciinema
+    #asciinema-agg
+    #ashell
+    #autojump
     bat
     blueman
-    brightnessctl
-    btop
+    #brightnessctl
+    htop
     bun
-    cliphist
+    #cliphist
     curl
-    dig
+    #dig
     direnv
-    discord
-    distrobox
+    #discord
+    #distrobox
     devenv
-    dufs
+    #dufs
     evince
     eza
     far2l
@@ -50,22 +54,21 @@
     fd
     ffmpeg
     ffmpegthumbnailer
-    file
-    file-roller
+    #file
+    #file-roller
     foot
     fzf
     gcc
     gifsicle
     git
-    glow
-    grim
+    #glow
+    #grim
     gtrash
     hyprpaper
     imagemagick
     imv
     inotify-tools
     jq
-    katago
     lazygit
     ledger
     lsd
@@ -75,36 +78,33 @@
     miniserve
     nix-direnv
     nixfmt
-    nodejs_24
+    #nodejs_24
     obsidian
     openssh
     openssl
     papirus-icon-theme
-    parallel
+    #parallel
     parted
     pciutils
     pkg-config
     playerctl
     poppler
     pup
-    qmk
+    #qmk
     qrencode
     rclone
     ristretto
-    rofi
-    rustlings
-    rustup
     satty
-    screen
-    slurp
+    #screen
+    #slurp
     smartmontools
-    statix
-    stow
+    #statix
+    #stow
     superfile
-    sxiv
-    tealdeer
+    #sxiv
+    #tealdeer
     telegram-desktop
-    terraform
+    #terraform
     typst
     unrar
     unzip
@@ -114,9 +114,21 @@
     wget
     whois
     wl-clipboard
-    yad
+    #yad
     zip
     zoxide
+    secretspec
+    tree-sitter
+    neovim
+    nixd
+    alejandra
+    luaPackages.jsregexp
+    tmux
+    gnupg
+    pass
+    passExtensions.pass-update
+    pinentry-curses
+    rustup
   ];
 
   programs.mpv = {

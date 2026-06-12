@@ -12,7 +12,7 @@
     #"starship.toml".source = ../config/starship/starship.main.toml;
     #"alacritty/alacritty.toml".source = ../config/alacritty/alacritty.toml;
     #"eza/theme.yml".source = ../config/eza/eza.main.yml;
-    #"fuzzel/fuzzel.ini".source = ../config/fuzzel/tokyonight.fuzzel.ini;
+    "fuzzel/fuzzel.ini".source = ../config/fuzzel/tokyonight.fuzzel.ini;
     "fastfetch/config.jsonc".source = ../config/fastfetch/main.fastfetch;
     #"fastfetch/violet.png".source = ../config/icons/violet.png;
     "qt5ct/qt5ct.conf".source = ../config/qt5ct/qt5ct.conf;

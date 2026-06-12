@@ -19,9 +19,14 @@ input {
      focus-follows-mouse max-scroll-amount="0%"
 }
 
-/-output "eDP-1" {
+output "HDMI-A-1" {
+    mode "1366x768@59.790"
+    scale 1
+}
+
+output "eDP-1" {
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1200@60.002"
+    mode "1920x1080@60.008"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1
@@ -60,8 +65,6 @@ layout {
     }
 }
 
-spawn-at-startup "chromium-browser"
-spawn-at-startup "Telegram"
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "alacritty"
@@ -84,10 +87,12 @@ workspace "4" { }
 
 window-rule {
     match app-id=r#"chromium-browser$"#
+    match app-id=r#"firefox$"#
     draw-border-with-background false
     geometry-corner-radius 8
     clip-to-geometry true
     open-on-workspace "3"
+    //open-on-output "HDMI-A-1"
     open-maximized true
     opacity 0.95
 }
@@ -125,8 +130,6 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
     match app-id=r#"Bitwarden$"#
     block-out-from "screen-capture"
 }
@@ -145,7 +148,6 @@ binds {
     Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
 
     //Mod+Z { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty --filename -"; }
-    //Mod+X { spawn "codium"; }
     //Mod+B { spawn "/run/current-system/sw/bin/bitwarden"; }
     Mod+ALt+S { spawn-sh "alacritty -e superfile"; }
     //Mod+Shift+J { spawn-sh "/run/current-system/sw/bin/jellyfin-desktop"; }
@@ -154,15 +156,10 @@ binds {
     Mod+Alt+T { spawn "Telegram"; }
     Mod+Alt+C { spawn "chromium-browser"; }
     Mod+Space { spawn-sh "noctalia-shell ipc call settings toggle"; }
-    Mod+Alt+Y { spawn-sh "alacritty -e yazi"; }
+    //Mod+Alt+Y { spawn-sh "alacritty -e yazi"; }
     Mod+Alt+B { spawn-sh "alacritty -e btop"; }
     Mod+Alt+F { spawn "far2l"; }
-
-    // Noctalia Media Controls
-    Ctrl+Alt+Space { spawn-sh "noctalia-shell ipc call media playPause"; }
-    Ctrl+Alt+Left { spawn-sh "noctalia-shell ipc call media previous"; }
-    Ctrl+Alt+Right { spawn-sh "noctalia-shell ipc call media next"; }
-    Mod+Shift+M { spawn-sh "noctalia-shell ipc call plugin togglePanel mediaMini"; }
+    Mod+Alt+X { spawn-sh "alacritty -e tuxedo"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }

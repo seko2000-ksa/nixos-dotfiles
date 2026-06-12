@@ -24,7 +24,7 @@
     };
   };
 
-  outputs = {
+  outputs = inputs@{
     self,
     nixpkgs,
     nixpkgs-master,
@@ -32,11 +32,12 @@
     noctalia,
     lazyvim,
     nur,
-  } @ inputs: let
+  }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      config.android_sdk.accept_license = true;
       overlays = [];
     };
     pkgs-master = import nixpkgs-master {
@@ -52,7 +53,7 @@
     ];
   in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-    nixosConfigurations.machine = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.acer = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       specialArgs = {inherit pkgs-master;};
       modules = [
@@ -75,7 +76,7 @@
       ];
     };
 
-    homeConfigurations.user = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.ksa = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules =
         homeModules
